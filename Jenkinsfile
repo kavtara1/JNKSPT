@@ -12,6 +12,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Install Python and pytest dependencies
+                sh 'cd JNKSPT'
                 sh 'pip install -r requirements.txt'
             }
         }
