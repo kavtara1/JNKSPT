@@ -12,6 +12,7 @@ pipeline {
         stage('Setup Python Environment') {
             steps {
                 // Install virtualenv if not already installed
+                bat 'python --version'
                 bat 'pip install virtualenv'
 
                 // Create a virtual environment
