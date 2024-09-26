@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clone your repository
-                git url: 'https://github.com/your-repo/your-project.git'
+                git url: 'https://github.com/kavtara1/JNKSPT.git'
             }
         }
 
