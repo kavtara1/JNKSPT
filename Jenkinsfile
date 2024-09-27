@@ -1,6 +1,9 @@
 pipeline {
     agent any
 
+    tools {
+        python 'Python3'  // Name of the Python tool configured
+    }
     stages {
         stage('Checkout') {
             steps {
