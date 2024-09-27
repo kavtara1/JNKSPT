@@ -11,7 +11,7 @@ pipeline {
         stage('Install Python and Pip') {
             steps {
                 bat '''
-                python --version
+                python3 --version
                 pip --version
                 '''
             }
