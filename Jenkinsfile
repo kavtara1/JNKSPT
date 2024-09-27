@@ -23,6 +23,8 @@ pipeline {
         stage('Get Command') {
             steps {
                 script {
+
+
                     // Initialize pytestCommand
                     def pytestCommand = "pytest --disable-warnings"
 
