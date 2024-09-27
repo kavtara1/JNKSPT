@@ -7,10 +7,14 @@ pipeline {
     }
 
     stages {
-        stage('Print Environment') {
+        stage('Check Environment') {
             steps {
                 script {
-                    echo "Selected environment: ${params.enviroment}"
+                    if (params.enviroment == "SIT") {
+                        echo "Hello SIT"
+                    } else {
+                        echo "Other environment selected: ${params.enviroment}"
+                    }
                 }
             }
         }
