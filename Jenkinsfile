@@ -12,6 +12,7 @@ pipeline {
         stage('Setup Python Environment') {
             steps {
 //                 // Install virtualenv if not already installed
+                echo "setup"
                 cd JNKSPT
 //                 bat 'python --version'
 //                 bat 'pip install virtualenv'
