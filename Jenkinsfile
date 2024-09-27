@@ -4,52 +4,38 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Clone your repository
-                git url: 'https://github.com/kavtara1/JNKSPT.git'
+                // Checkout the code from your Git repository
+                git branch: 'master', url: 'https://github.com/kavtara1/JNKSPT.git'
             }
         }
 
-        stage('Setup Python Environment') {
+        stage('Install Dependencies') {
             steps {
-//                 // Install virtualenv if not already installed
-                echo "setup"
-                cd JNKSPT
-//                 bat 'python --version'
-//                 bat 'pip install virtualenv'
-//
-//                 // Create a virtual environment
-//                 bat 'virtualenv venv'
-//
-//                 // Activate the virtual environment and install dependencies
-//                 bat '''
-//                 venv\\Scripts\\activate
-//                 pip install -r requirements.txt
-//                 '''
+                // Assuming you have a requirements.txt to install dependencies
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                // Activate the virtual environment and run pytest
-                bat '''
-                venv\\Scripts\\activate
-                pytest --junitxml=reports\\test-results.xml
-                '''
+                // Run pytest
+                bat 'pytest --maxfail=1 --disable-warnings'
             }
         }
     }
 
     post {
         always {
-            // Publish test results
-            junit 'reports/test-results.xml'
+            // Publish test results (JUnit format for Jenkins to parse)
+            junit '**/test-results.xml'
         }
 
-        cleanup {
-            // Clean up the virtual environment or any temporary files
-            bat '''
-            rmdir /S /Q venv
-            '''
+        failure {
+            echo 'Test failed!'
+        }
+
+        success {
+            echo 'All tests passed!'
         }
     }
 }
