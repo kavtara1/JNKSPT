@@ -1,37 +1,15 @@
 pipeline {
     agent any
 
-    tools {
-        python 'Python3'  // Name of the Python tool configured
+    parameters {
+      string defaultValue: 'SIT', description: 'select inviroment, SIT, DEV, QA', name: 'enviroment', trim: true
     }
+
+
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'master', url: 'https://github.com/kavtara1/JNKSPT.git'
-            }
-        }
-
-        stage('Install Python and Pip') {
-            steps {
-                bat '''
-                python3 --version
-                pip --version
-                '''
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                bat 'pip install -r requirements.txt'
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                bat 'pytest --maxfail=1 --disable-warnings'
-            }
-        }
-    }
+      stage{
+      echo "params.enviroment"
+      }
 
     post {
         always {
