@@ -11,19 +11,19 @@ pipeline {
 
         stage('Setup Python Environment') {
             steps {
-                // Install virtualenv if not already installed
+//                 // Install virtualenv if not already installed
                 cd JNKSPT
-                bat 'python --version'
-                bat 'pip install virtualenv'
-
-                // Create a virtual environment
-                bat 'virtualenv venv'
-
-                // Activate the virtual environment and install dependencies
-                bat '''
-                venv\\Scripts\\activate
-                pip install -r requirements.txt
-                '''
+//                 bat 'python --version'
+//                 bat 'pip install virtualenv'
+//
+//                 // Create a virtual environment
+//                 bat 'virtualenv venv'
+//
+//                 // Activate the virtual environment and install dependencies
+//                 bat '''
+//                 venv\\Scripts\\activate
+//                 pip install -r requirements.txt
+//                 '''
             }
         }
 
